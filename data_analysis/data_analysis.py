@@ -37,9 +37,3 @@ def moving_average(data,window):
     for i in range(window, moving_avg.size - window):
         moving_avg[i] = np.mean(data[i - window:i + window])
     return moving_avg
-
-def testing_moving_average():
-    moving_avg=moving_average(np.ones(1000).astype(np.float),4)
-    assert np.all(np.isnan(moving_avg[0:4])),"Head fails"
-    assert np.all(np.isnan(moving_avg[-4:])),"Tail fails"
-    assert np.allclose(moving_avg[4:-4],1.0),"Body fails"
